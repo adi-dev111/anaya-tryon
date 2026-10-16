@@ -1,0 +1,15 @@
+﻿# Render free deployment config for our AI backend.
+services:
+  - type: web
+    name: anaya-tryon
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:\
+    envVars:
+      - key: TRYON_MODE
+        value: gradio
+      - key: GRADIO_SPACE_URL
+        value: https://yisol-idm-vton.hf.space
+      - key: PYTHON_VERSION
+        value: "3.11.9"
